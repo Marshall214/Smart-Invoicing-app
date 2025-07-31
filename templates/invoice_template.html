@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ invoice_id }}</title>
+    <style>
+        /* Add your styles here */
+    </style>
+</head>
+<body>
+    <h1>Invoice #{{ invoice_id }}</h1>
+    <p><strong>Client Name:</strong> {{ client_name }}</p>
+    <p><strong>Phone Number:</strong> {{ client_phone }}</p> <!-- Display Phone Number -->
+    <p><strong>Address:</strong> {{ client_address }}</p> <!-- Display Address -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>Description</th>
+                <th>Quantityy</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in service_items %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.unit_price }}</td>
+                <td>{{ item.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Total Amount:</strong> {{ total_amount }} NGN</p>
+    <p><strong>Tax ({{ tax }}%):</strong> {{ tax_amount }} NGN</p>
+    <p><strong>Total:</strong> {{ total }} NGN</p>
+    <p><strong>Due Date:</strong> {{ due_date }}</p>
+    <p><strong>Date Issued:</strong> {{ date_today }}</p>
+</body>
+</html>
